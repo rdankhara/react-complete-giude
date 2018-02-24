@@ -9,6 +9,7 @@ import UserOutput from './UserOutput/UserOutput';
 class App extends Component {
   state = {
     userName : "rtdankhara",
+    showPerson : false,
     persons : [
       {name : "Rajnikant", age:39},
       {name : "Asha", age:37},
@@ -29,6 +30,12 @@ class App extends Component {
         this.setState({userName : event.target.value});
       } 
     
+      togglePerson = () => {
+        console.log("toggle person invoked" + this.state.showPerson);
+        this.setState({ showPerson : !this.state.showPerson
+
+        })
+      }
   render() {
     return (
       <div className="App">
@@ -40,7 +47,10 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <button onClick={this.switchHandler}>Switch Name</button>
-        <Person 
+        <button onClick={this.togglePerson}>Toggle Person</button>
+        { this.state.showPerson ?
+        <article> 
+          <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} 
           click={this.switchHandler}>Update using click event</Person>
@@ -50,6 +60,10 @@ class App extends Component {
             My Hobbies includes shopping</Person>
         <Person 
           name={this.state.persons[2].name} age={this.state.persons[2].age} />
+          </article>
+          : null
+      }
+        
         <UserInput userName={this.state.userName} change={this.userNameChangeHandler} />
         <UserOutput userName={this.state.userName} />
           
