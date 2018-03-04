@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '../../src/logo.svg';
 import './App.css';
-import Person from '../src/components/Person/Person';
 import { stat } from 'fs';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
+import Persons from '../../src/components/Persons/Persons';
+import UserInput from '../components/UserInput/UserInput';
+import UserOutput from '../components/UserOutput/UserOutput';
 
 class App extends Component {
   state = {
@@ -45,16 +45,21 @@ class App extends Component {
     let person = null ;
     if (this.state.showPerson)
     {
-      person =<article>
-      {
-        this.state.persons.map((person, index) => {
-          return <Person name={person.name}
-            age={person.age}
-            delete={this.deletePersonHandler.bind(this, index)}
-            key={person.id}> </Person>
-        })
-      }
-    </article>;
+      person = <Persons 
+        persons={this.state.persons} 
+        delete={this.deletePersonHandler.bind(this)}
+        >
+        </Persons>
+      // person =<article>
+      // {
+      //   this.state.persons.map((person, index) => {
+      //     return <Person name={person.name}
+      //       age={person.age}
+      //       delete={this.deletePersonHandler.bind(this, index)}
+      //       key={person.id}> </Person>
+      //   })
+      //}
+    //</article>;
     }
 
 
