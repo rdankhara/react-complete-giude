@@ -47,26 +47,13 @@ class App extends Component {
     {
       person = <Persons 
         persons={this.state.persons} 
-        delete={this.deletePersonHandler.bind(this)}
-        >
+        delete={this.deletePersonHandler}>
         </Persons>
-      // person =<article>
-      // {
-      //   this.state.persons.map((person, index) => {
-      //     return <Person name={person.name}
-      //       age={person.age}
-      //       delete={this.deletePersonHandler.bind(this, index)}
-      //       key={person.id}> </Person>
-      //   })
-      //}
-    //</article>;
     }
-
 
     return (
       <div className="App">
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
