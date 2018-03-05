@@ -19,24 +19,29 @@ class App extends Component {
         {name : "Asha", age:37, id:2},
         {name : "Fairy", age:13, id:3}
       ]};
-      console.log('hook:constructor')
+      console.log('hook App.js constructor')
   }
-  componentDidCatch(){
-    console.log('componentDidCatch');
+  componentDidCatch(error, errorInfo){
+    console.log('hook App.js componentDidCatch');
   }
   componentDidMount(){
-    console.log('componentDidMount');
+    console.log('hook App.js componentDidMount');
   }
   componentWillMount(){
-    console.log('componentWillMount');
+    console.log('hook App.js componentWillMount');
   }
-  componentWillReceiveProps()
+  componentWillReceiveProps(nextProps, nextState, nextContext)
   {
-    console.log('componentWillReceivePros');
+    console.log('hook App.js componentWillReceivePros');
   }
+  shouldComponentUpdate(nextProps, nextState, nextContext){
+    console.log('hook App.js shouldComponentUpdate')
+    return true;
+  }
+  
   componentWillUpdate()
   {
-    console.log('componentWillUpdate');
+    console.log('hook App.js componentWillUpdate');
   }
     switchHandler = () => {
       this.setState({persons : [
@@ -60,7 +65,9 @@ class App extends Component {
         newpersons.splice(personIndex, 1);
         this.setState({persons: newpersons});
       }
+
   render() {
+    console.log("hook App.js component render")
     let person = null ;
     if (this.state.showPerson)
     {
@@ -79,7 +86,6 @@ class App extends Component {
         { person }
         <UserInput userName={this.state.userName} change={this.userNameChangeHandler} />
         <UserOutput userName={this.state.userName} />
-
       </div>
     );
   }
