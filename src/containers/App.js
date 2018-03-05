@@ -5,17 +5,39 @@ import { stat } from 'fs';
 import Persons from '../../src/components/Persons/Persons';
 import UserInput from '../components/UserInput/UserInput';
 import UserOutput from '../components/UserOutput/UserOutput';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  state = {
-    userName : "rtdankhara",
-    showPerson : false,
-    persons : [
-      {name : "Rajnikant", age:39, id: 1},
-      {name : "Asha", age:37, id:2},
-      {name : "Fairy", age:13, id:3}
-    ]};
+  constructor(props){
+    super(props);
 
+    this.state = {
+      userName : "rtdankhara",
+      showPerson : false,
+      persons : [
+        {name : "Rajnikant", age:39, id: 1},
+        {name : "Asha", age:37, id:2},
+        {name : "Fairy", age:13, id:3}
+      ]};
+      console.log('hook:constructor')
+  }
+  componentDidCatch(){
+    console.log('componentDidCatch');
+  }
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+  componentWillMount(){
+    console.log('componentWillMount');
+  }
+  componentWillReceiveProps()
+  {
+    console.log('componentWillReceivePros');
+  }
+  componentWillUpdate()
+  {
+    console.log('componentWillUpdate');
+  }
     switchHandler = () => {
       this.setState({persons : [
         {name : "Rajnikant", age:39},
@@ -25,18 +47,15 @@ class App extends Component {
     }
 
     userNameChangeHandler = (event) => {
-        console.log('username change handler fired');
         console.log(event.target.value);
         this.setState({userName : event.target.value});
       }
 
-      togglePerson = () => {
-        console.log("toggle person invoked" + this.state.showPerson);
+      togglePersonHandler = () => {
         this.setState({ showPerson : !this.state.showPerson});
       }
 
       deletePersonHandler = (personIndex) => {
-        console.log("delete handler invokde for: " + personIndex);
         let newpersons = this.state.persons.slice();
         newpersons.splice(personIndex, 1);
         this.setState({persons: newpersons});
@@ -56,13 +75,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={this.switchHandler}>Switch Name</button>
-        <button onClick={this.togglePerson}>Toggle Person</button>
+        <Cockpit toggle={this.togglePersonHandler} persons={this.state.persons} show={this.state.showPerson}/>
         { person }
-
         <UserInput userName={this.state.userName} change={this.userNameChangeHandler} />
         <UserOutput userName={this.state.userName} />
 

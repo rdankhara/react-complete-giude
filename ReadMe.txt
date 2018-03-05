@@ -3,3 +3,7 @@
 
 -- render something on dom conditionally use below turnary operator in {}
 { booleanCondition ? element to render : element to render on false condition or null }
+
+To modularise css use steps below
+1. from terminal hit command npm run eject
+2. add css options { modules : true, localIdentName : '[name]__[local]__[hash:base64:5]}
