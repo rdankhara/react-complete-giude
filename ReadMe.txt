@@ -7,3 +7,5 @@
 To modularise css use steps below
 1. from terminal hit command npm run eject
 2. add css options { modules : true, localIdentName : '[name]__[local]__[hash:base64:5]}
+
+WrappedComponent will need pass props using {...props} syntext check withClass.js
