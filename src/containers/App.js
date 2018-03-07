@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       userName : "rtdankhara",
       showPerson : false,
+      toggleClicked : 0,
       persons : [
         {name : "Rajnikant", age:39, id: 1},
         {name : "Asha", age:37, id:2},
@@ -57,9 +58,17 @@ class App extends Component {
       }
 
       togglePersonHandler = () => {
-        this.setState({ showPerson : !this.state.showPerson});
-      }
-
+        //Use below approach in case if you rely on previous state properties like toggleClicked or showPerson
+          this.setState((prevState, props) => {
+            console.log("toggleClicked" + prevState.toggleClicked);
+          return {
+            showPerson : !prevState.showPerson,
+            toggleClicked: prevState.toggleClicked + 1
+            };
+          }
+        );
+    }
+    
       deletePersonHandler = (personIndex) => {
         let newpersons = this.state.persons.slice();
         newpersons.splice(personIndex, 1);
