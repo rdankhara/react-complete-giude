@@ -9,3 +9,5 @@ To modularise css use steps below
 2. add css options { modules : true, localIdentName : '[name]__[local]__[hash:base64:5]}
 
 WrappedComponent will need pass props using {...props} syntext check withClass.js
+
+To force prop types install package using npm install prop-types --save

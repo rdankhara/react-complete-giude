@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
+import PropTypes from 'prop-types';
 
 const person = (props) => {
     return (
@@ -12,4 +13,10 @@ const person = (props) => {
     );
 }
 
+person.prototype = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    delete: PropTypes.func
+}
 export default withClass(person, classes.person);
